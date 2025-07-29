@@ -1,20 +1,14 @@
-<<<<<<< HEAD
-# barber_app
+# barber_app 
 
-A new Flutter project.
+SO i will have OnBoarding page , Home screen page , Booking page , LOGIN and SIGNUP page
 
-## Getting Started
+// created an image folder and then adding the image to pubspec.yaml in the assets section 
 
-This project is a starting point for a Flutter application.
+# ONBOARDING PAGE
 
-A few resources to get you started if this is your first Flutter project:
+  now make a new folfer on lib called pages and then make a new file onboaring.dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  //call onboarding page in main.dart file
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# barber_app
->>>>>>> 0a5d1f5114f7f2959741b5ea7f1ebc28d763926a
+i will be using stateful widges for dynamic changes
+
