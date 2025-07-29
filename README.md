@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # barber_app
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# barber_app
+>>>>>>> 0a5d1f5114f7f2959741b5ea7f1ebc28d763926a
