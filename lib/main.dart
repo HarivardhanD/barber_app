@@ -1,3 +1,8 @@
+import 'package:barber_app/pages/booking.dart';
+// ignore: unused_import
+import 'package:barber_app/pages/home.dart';
+// ignore: unused_import
+import 'package:barber_app/pages/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -30,10 +36,11 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Booking()
     );
   }
 }
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
