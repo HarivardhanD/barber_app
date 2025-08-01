@@ -8,6 +8,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  TextEditingController textcontroller =  TextEditingController();
+  TextEditingController mailcontroller = TextEditingController();
+  TextEditingController passcontroller = TextEditingController();
+ 
+  final _formKey =GlobalKey<FormState>(); // check if the all the fields are filled in text field 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold( body: Stack(
@@ -38,7 +45,10 @@ class _SignUpState extends State<SignUp> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: SingleChildScrollView(
+              
+              child: SingleChildScrollView( // singlechildScrollView can fit any screen and not cause overflow problem
+              child:Form(
+                key: _formKey,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -47,37 +57,59 @@ class _SignUpState extends State<SignUp> {
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
-                    const TextField(
-                      decoration: InputDecoration(
+
+                    TextFormField( // to check the form we make TextField as TextFormField
+                      validator: (value) {
+                        if (value == null || value.isEmpty){
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                      controller: textcontroller,
+                      decoration: const InputDecoration(
                         hintText: "Enter your Name",
                         prefixIcon: Icon(Icons.person),
                         border: OutlineInputBorder(),
                       ),
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
 
                     const SizedBox(height: 20),
 
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty){
+                          return 'Please enter your email';
+                        }
+                      return null;
+                      },
+                      controller: mailcontroller,
+                      decoration: const InputDecoration(
                         hintText: "Enter your email",
                         prefixIcon: Icon(Icons.mail_lock_outlined),
                         border: OutlineInputBorder(),
                       ),
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
 
                     const SizedBox(height: 20),
 
                     
-                    const TextField(
-                      decoration: InputDecoration(
+                    TextFormField(
+                      validator: (value){
+                        if (value == null || value.isEmpty){
+                          return 'Please enter your password';
+                      }
+                      return null;
+                      },
+                      controller: passcontroller,
+                      decoration: const InputDecoration(
                         hintText: "Password",
                         prefixIcon: Icon(Icons.password),
                         border: OutlineInputBorder(),
                       ),
                       obscureText: true,
-                      style: TextStyle(fontWeight: FontWeight.w500),
+                      style: const TextStyle(fontWeight: FontWeight.w500),
                     ),
 
                     const SizedBox(height: 20),
@@ -114,6 +146,7 @@ class _SignUpState extends State<SignUp> {
                   
                   ],
                 ),
+              ),
               ),
             ),
           ),
