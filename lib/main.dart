@@ -1,7 +1,7 @@
+import 'package:barber_app/pages/home.dart';
 import 'package:barber_app/pages/login.dart';
 import 'package:barber_app/pages/signup.dart';
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 Future<void> main() async {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Barber App',
-      home: LogIn(),
+      home: Home(),
     );
   }
 }

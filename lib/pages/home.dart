@@ -1,4 +1,5 @@
 import 'package:barber_app/pages/booking.dart';
+import 'package:barber_app/services/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +10,31 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  String ? name;
+
+  getthedatafromsharedpref() async{
+     name = await SharedPreferenceHelper.getUserName();
+     setState(() {
+       
+     });
+  }
+  getontheload()async{
+    await getthedatafromsharedpref();
+
+    //setState() — Flutter framework method used to rebuild the UI when something changes (like updating name).
+    setState(() {
+      
+    });
+  }
+ 
+
+ // when user will move to the home page init state is the first function to be executed ; 
+  @override
+  void initState() {
+    getontheload();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,16 +50,16 @@ class _HomeState extends State<Home> {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Hello',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Harivardhan',
+                       name!,
                       style:
-                          TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

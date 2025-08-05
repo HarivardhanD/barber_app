@@ -1,6 +1,11 @@
+import 'package:barber_app/services/database.dart';
+import 'package:barber_app/services/shared_pref.dart';
+import 'package:random_string/random_string.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'home.dart'; // Replace with the actual path to your Home screen
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -22,8 +27,21 @@ class _SignUpState extends State<SignUp> {
   Future<void> registration() async {
     if (password != null && email != null && name != null) {
       try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email!, password: password!);
+        UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email!, password: password!);
+            // ignore: unused_local_variable
+            String id = randomAlphaNumeric(10);
+            // ignore: unused_local_variable
+
+            await SharedPreferenceHelper().saveUserName(textcontroller.text); // saving name locally
+             await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);//savng email locally
+             await SharedPreferenceHelper().saveUserId(id);//saving id locally
+            Map<String,dynamic>userInfoMap={
+              "Name":textcontroller.text,
+              "Email":mailcontroller.text,
+              "Id": id,
+
+            };
+            DatabaseMethods.addUserDetails(userInfoMap,id);
 
         // You can also save the user's name to Firestore here if needed
 

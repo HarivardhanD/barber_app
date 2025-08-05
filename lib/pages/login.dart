@@ -1,6 +1,4 @@
-import 'dart:math';
 import 'home.dart';
-import 'package:barber_app/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
