@@ -33,8 +33,8 @@ class _SignUpState extends State<SignUp> {
             // ignore: unused_local_variable
 
             await SharedPreferenceHelper().saveUserName(textcontroller.text); // saving name locally
-             await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);//savng email locally
-             await SharedPreferenceHelper().saveUserId(id);//saving id locally
+            await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);//savng email locally
+            await SharedPreferenceHelper().saveUserId(id);//saving id locally
             Map<String,dynamic>userInfoMap={
               "Name":textcontroller.text,
               "Email":mailcontroller.text,

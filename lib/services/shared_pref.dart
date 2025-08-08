@@ -36,7 +36,7 @@ Future<bool> saveUserEmail(String getUserEmail)async{
   return prefs.setString(userEmailKey, getUserEmail);
 }
 
-Future<String?> getUserEmail()async{
+static Future <String?> getUserEmail()async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.getString( userEmailKey);
 }

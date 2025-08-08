@@ -1,3 +1,5 @@
+import 'package:barber_app/services/database.dart';
+import 'package:barber_app/services/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 class Booking extends StatefulWidget {
@@ -10,6 +12,33 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
+
+  String ? name,email;
+
+  getthedatafromsharedpref() async{
+     name = await SharedPreferenceHelper.getUserName();
+     email = await SharedPreferenceHelper.getUserEmail();
+     setState(() {
+       
+     });
+  }
+  getontheload()async{
+    await getthedatafromsharedpref();
+
+    //setState() — Flutter framework method used to rebuild the UI when something changes (like updating name).
+    setState(() {
+      
+    });
+  }
+ 
+
+ // when user will move to the home page init state is the first function to be executed ; 
+  @override
+  void initState() {
+    getontheload();
+    super.initState();
+  }
+  
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
 
@@ -117,6 +146,47 @@ class _BookingState extends State<Booking> {
                     : "Time: ${selectedTime!.hour}:${selectedTime!.minute.toString().padLeft(2, '0')}"),
               ),
             ),
+            SizedBox(height: 40,),
+            GestureDetector(
+              onTap: () async{
+                if (selectedDate == null || selectedTime == null || name == null || email == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Please fill all the fields before booking."),
+      ),
+    );
+    return;
+  }
+                Map<String,dynamic>userBookingmap={
+                  "Service":widget.service,
+                  "Date":"${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}".toString(),
+                  "Time":"${selectedTime!.hour}:${selectedTime!.minute}".toString(),
+                  "UserName":name,
+                  "Email":email,
+                };
+                await DatabaseMethods.addBookingDetails(userBookingmap);
+                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Invalid password",style:TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)));
+                  
+                
+                
+
+              },
+            
+            child:Container(
+              
+              padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: const Color.fromARGB(255, 148, 200, 244)),
+              child:Center(
+              child: 
+              Text("Book" ,style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),
+              ),
+            ),
+            ),
+
+
+
+            
           ],
         ),
       ),
