@@ -1,6 +1,7 @@
 // in the services folder we will have code for firestore ( database )
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/widgets.dart';
 
 class DatabaseMethods{
   static addUserDetails(Map<String,dynamic>userInfoMap ,String id) async{
@@ -21,6 +22,10 @@ class DatabaseMethods{
     print(" Error adding booking: $e");
     rethrow; // Let UI handle error
   }
+}
+
+Future <Stream<QuerySnapshot>> getBookings() async { // Stream Builder is used to fetch data from the firestore
+  return await FirebaseFirestore.instance.collection("Booking").snapshots();
 }
 
 }
