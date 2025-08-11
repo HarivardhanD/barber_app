@@ -1,4 +1,5 @@
 import 'package:barber_app/Admin/admin_login.dart';
+import 'package:barber_app/Admin/booking_admin.dart';
 import 'package:barber_app/pages/home.dart';
 import 'package:barber_app/pages/login.dart';
 import 'package:barber_app/pages/signup.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Barber App',
-      home: AdminLogin(),
+      home: BookingAdmin(),
     );
   }
 }
